@@ -12,7 +12,7 @@ const Main = () => {
     const email = useSelector((state: States ) => state.user.email);
     const username = useSelector((state: States ) => state.user.username);
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if(!localStorage.getItem("authtoken")) return history.push('/auth/signin'); 

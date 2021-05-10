@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { signIn, signOut } from '../../store/actions';
-import { States, UserState } from '../../types/user';
+import { signIn } from '../../store/actions';
 
 import axios from 'axios';
 import { baseConfig } from '../../utils/requestConfigs';
@@ -21,7 +20,7 @@ const SingIn = () => {
     // const id = useSelector((state: States) => state.user.id);
     // const email = useSelector((state: States ) => state.user.email);
     // const username = useSelector((state: States ) => state.user.username);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if(localStorage.getItem("authtoken")) return history.push('/'); 
@@ -31,11 +30,7 @@ const SingIn = () => {
     const signInHandler = async (e: any) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post(
-                "/api/auth/signin",
-                { email: email, password: password },
-                baseConfig
-            );
+            const { data } = await axios.post("/api/auth/signin",{ email, password }, baseConfig);
             localStorage.setItem("authtoken", data.token);
             dispatch(signIn(data.token));
             history.push('/');
