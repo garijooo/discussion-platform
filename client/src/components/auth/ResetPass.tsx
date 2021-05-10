@@ -2,11 +2,24 @@ import React from 'react';
 import axios from 'axios';
 import history from '../../histrory';
 import { Link } from 'react-router-dom';
+import { RouteProps } from 'react-router';
 
-class ResetPass extends React.Component {
+interface Props {
+    match: any,
+    params: any
+}
+
+interface State {
+    password: string,
+    confirmPassword: string,
+    success: string,
+    error: string
+}
+
+class ResetPass extends React.Component<Props & RouteProps, State> {
     state = { password: "", confirmPassword: "", success: "", error: "" };
 
-    resetPasswordHandler = async e => {
+    resetPasswordHandler = async (e: any) => {
         e.preventDefault();
 
         const config = {
@@ -17,7 +30,6 @@ class ResetPass extends React.Component {
 
         if(this.state.password !== this.state.confirmPassword) return this.setState({ error: 'Passwords do not match'});
         try {
-            
             const { data } = await axios.put(
                 `/api/auth/resetpass/${this.props.match.params.resetToken}`,
                 {

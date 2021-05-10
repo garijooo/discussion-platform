@@ -5,13 +5,14 @@ import history from '../../histrory';
 class ForgotPass extends React.Component {
     state = { email: null, error: null, success: null };
 
-    forgotPassHandler = async e => {
+    forgotPassHandler = async (e: any) => {
         e.preventDefault();
         const config = {
-            header: {
-                "Content-Type":"application/json"
-            },
+            headers: {
+                "Content-Type": "application/json"
+            }
         };
+        
         try {
             const { data } = await axios.post(
                 "/api/auth/forgotpass",

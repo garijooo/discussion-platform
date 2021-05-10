@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+import { baseConfig } from '../../utils/requestConfigs';
 import history from '../../histrory';
 //styles
 import '../../styles/auth-screen.css';
@@ -9,31 +10,25 @@ import '../../styles/auth-screen.css';
 class SingUp extends React.Component {
     state = { username: null, email: null, password: null, confirmPassword: null, error: null };
 
-    signUpHandler = async (e) => {
+    signUpHandler = async (e: any) => {
         e.preventDefault();
- 
-        const config = {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        };
         if(this.state.password !== this.state.confirmPassword) 
         return this.setState({ password: null, confirmPassword: null, error: 'Passwords do not match'});
-        
         try {
             const { data } = await axios.post(
                 "/api/auth/signup",
-                { username: this.state.username, email: this.state.email, password: this.state.password},
-                config
-            );
-
+                {
+                    username: this.state.username,
+                    email: this.state.email,
+                    password: this.state.password
+                },
+                baseConfig
+            );      
             localStorage.setItem("authtoken", data.token);
-
             history.push('/');
         } catch(error){
             this.setState({ error: error.response.data.error });
         }
-
     }
 
     render() {
@@ -92,7 +87,7 @@ class SingUp extends React.Component {
                             type="submit" 
                             name="submit"
                             value="Sign up"
-                            onClick={this.signUpHandler}
+                            onSubmit={this.signUpHandler}
                         />
                         <div className="auth-screen__form__error">
                             {this.state.error && `${this.state.error}` }

@@ -7,6 +7,7 @@ const keys = require('./config/keys');
 const PORT = process.env.PORT || 5000;
 const errorHandler = require('./middleware/errorHandler');
 
+app.use(express.json());
 app.use('/api/auth/', require('./routes/authRoutes'));
 app.use('/api/private/', require('./routes/privateRoutes'));
 app.use(errorHandler);
