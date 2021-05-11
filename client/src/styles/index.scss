@@ -1,0 +1,78 @@
+@import 'auth.scss';
+// colors: 
+$main_first: #6ab688;
+$error: #7c0000;
+$basic_indent:1.5em;
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: $basic_indent 0;
+    border: 1px solid #9fa8b4;
+    border-radius: 6px;
+
+    font-family: "Sansation Light";
+
+    &__title {
+        text-align: center;
+        margin-bottom: 1rem;
+        font-size: 200%;
+    }
+
+    &__element {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: $basic_indent;
+        width: 80%;
+
+        & label, & input {
+            margin-bottom: $basic_indent / 3;
+            width: calc(100% - ($basic_indent / 3));
+            font-family: "Sansation Light";
+            outline: none;
+        }
+
+        & input[type=text], & input[type=email], & input[type=password], & input[type=submit]  {
+            padding: $basic_indent / 3 $basic_indent / 4;
+        }
+
+        & input[type=submit] {
+            background: $main_first;
+            color: #fff;
+            width: 40%;
+            border: none;
+            border-radius: 6px;
+        }
+
+        & label, & input[type=submit] {
+            font-size: $basic_indent * 3 / 4;
+        }
+    }
+
+    &__error {
+        color: $error;
+    }
+
+    &__subtext {
+        font-size: 0.7rem;
+        bottom: 1em;
+        left: 25%;
+
+        &_pass {
+            bottom: 5em;
+            left: 3em;
+        }
+    }
+
+    &__subtext, &__subtext_pass {
+        font-size: 0.7rem;
+    }
+
+}

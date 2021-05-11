@@ -8,8 +8,6 @@ import axios from 'axios';
 import { baseConfig } from '../../utils/requestConfigs';
 
 import history from '../../histrory';
-//styles
-import '../../styles/auth-screen.css';
 
 const SignUp = () => {
     // states

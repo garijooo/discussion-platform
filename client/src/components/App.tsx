@@ -14,6 +14,9 @@ import Main from './Main';
 import Error from './Error';
 
 import history from '../histrory';
+// styles
+import '../styles/index.scss';
+
 const App = () => {
     return (
         <Router history={history}>

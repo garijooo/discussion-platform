@@ -27,6 +27,11 @@ const Main = () => {
         }
     }
 
+    const signOutHandler = () => {
+        dispatch(signOut);
+        localStorage.removeItem("authtoken");
+        history.push('/auth/signin'); 
+    }
 
     return (
         <div>
@@ -34,6 +39,7 @@ const Main = () => {
             {
             `   ${username}`
             }
+            <button onClick={signOutHandler}>Exit</button>
         </div>
     );
 }

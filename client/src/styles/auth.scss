@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Sansation Light";
+  src: url("../fonts/Sansation_Light.ttf");
+}
+@font-face {
+    font-family: "Sansation Bold";
+    src: url("../fonts/Sansation_Bold.ttf");
+}
+
+$basic_indent:1.5em;
+
+.auth{
+  width: calc(100vw - ($basic_indent * 2));
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  padding: 0 $basic_indent * 2;
+
+  &__headings {
+    display: block;
+    width: 60%;
+    max-width: 1200px;
+    height: 100vh;
+
+    &_first {
+      position: absolute;
+      background: lime;
+    }
+
+    &_second {
+      position: absolute;
+      background: yellowgreen;
+      bottom: 0;
+      right: 200px;
+    }
+  }
+
+  &__form {
+    width: 30%;
+    max-width: 600px;
+  }
+}
+  
+@media only screen and (max-width: 500px) {
+  .auth__headings {
+    display: none;
+  }
+}
