@@ -7,6 +7,8 @@ import { UserState, States } from '../types/user';
 import { authConfig } from '../utils/requestConfigs'
 import history from '../histrory';
 
+import Header from './Header';
+
 const Main = () => {
     const id = useSelector((state: States) => state.user.id);
     const email = useSelector((state: States ) => state.user.email);
@@ -15,8 +17,8 @@ const Main = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(!localStorage.getItem("authtoken")) return history.push('/auth/signin'); 
-        if(!id) fetchPrivateData();
+        // if(!localStorage.getItem("authtoken")) return history.push('/auth/signin'); 
+        // if(!id) fetchPrivateData();
     }, []);
 
     const fetchPrivateData = async () => {
@@ -35,6 +37,7 @@ const Main = () => {
 
     return (
         <div>
+            <Header />
             Your username is: 
             {
             `   ${username}`

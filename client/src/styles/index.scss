@@ -1,7 +1,10 @@
 @import 'auth.scss';
+@import 'header.scss';
+
 // colors: 
 $main_first: #6ab688;
 $error: #7c0000;
+// vars:
 $basic_indent:1.5em;
 
 * {
@@ -16,7 +19,7 @@ $basic_indent:1.5em;
     flex-direction: column;
     padding: $basic_indent 0;
     border: 1px solid #9fa8b4;
-    border-radius: 6px;
+    border-radius: 8px;
 
     font-family: "Sansation Light";
 
@@ -29,7 +32,7 @@ $basic_indent:1.5em;
     &__element {
         display: flex;
         flex-direction: column;
-        margin-bottom: $basic_indent;
+        margin-bottom: $basic_indent * 3 / 4;
         width: 80%;
 
         & label, & input {
@@ -44,11 +47,18 @@ $basic_indent:1.5em;
         }
 
         & input[type=submit] {
-            background: $main_first;
-            color: #fff;
             width: 40%;
+            background: $main_first;
             border: none;
             border-radius: 6px;
+            color: #fff;
+            cursor: pointer;
+
+            transition: ease .8s;
+
+            &:hover {
+                background: #81daa4;
+            }
         }
 
         & label, & input[type=submit] {
@@ -60,19 +70,24 @@ $basic_indent:1.5em;
         color: $error;
     }
 
-    &__subtext {
-        font-size: 0.7rem;
-        bottom: 1em;
-        left: 25%;
 
-        &_pass {
-            bottom: 5em;
-            left: 3em;
+    &__subtext {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: $basic_indent * 3 / 4;
+
+        &_span a {
+            color: $main_first;
+        }
+        
+        &.center {
+            display: flex;
+            justify-content: center;
         }
     }
 
-    &__subtext, &__subtext_pass {
-        font-size: 0.7rem;
-    }
+
 
 }

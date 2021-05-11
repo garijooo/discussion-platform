@@ -42,10 +42,14 @@ const SignUp = () => {
     }
 
     return (
-        <div className="auth-screen">
-            <form className="auth-screen__form" onSubmit={signUpHandler} >
-                <h3 className="auth-screen__title">Sign up</h3>
-                <div className="auth-screen__form__element">
+        <div className="auth">
+            <div className="auth__headings">
+                <h1 className="auth__headings_first">dis</h1>
+                <h1 className="auth__headings_second">Culture</h1>
+            </div>
+            <form className="auth__form form" onSubmit={signUpHandler} >
+                <h3 className="form__title">Sign up</h3>
+                <div className="form__element">
                     <label htmlFor="username">Username:</label>
                     <input 
                         type="text" 
@@ -55,7 +59,7 @@ const SignUp = () => {
                         onChange={e => setUsername(e.target.value)}
                     />
                 </div>
-                <div className="auth-screen__form__element">
+                <div className="form__element">
                     <label htmlFor="email">Email:</label>
                     <input 
                         type="email" 
@@ -65,7 +69,7 @@ const SignUp = () => {
                         onChange={e => setEmail(e.target.value)}
                     />
                 </div>  
-                <div className="auth-screen__form__element">
+                <div className="form__element">
                     <label htmlFor="password">Password:</label>
                     <input 
                         type="password" 
@@ -75,7 +79,7 @@ const SignUp = () => {
                         onChange={e => setPassword(e.target.value)}
                     />
                 </div>     
-                <div className="auth-screen__form__element">
+                <div className="form__element">
                     <label htmlFor="confirmPassword">Confirm password:</label>
                     <input 
                         type="password" 
@@ -85,21 +89,22 @@ const SignUp = () => {
                         onChange={e => setConfirmPassword(e.target.value)}
                     />
                 </div>      
-                <div className="auth-screen__form__element">
+                <div className="form__element form__subtext center">
                     <input 
                         type="submit" 
                         name="submit"
                         value="Sign up"
                         onSubmit={signUpHandler}
                     />
-                    <div className="auth-screen__form__error">
-                        {error && `${error}` }
-                    </div>
                 </div>
-                <span className="auth-screen__subtext">
-                    Already have an account? 
-                    <Link to="/auth/signin">Sign in</Link>
-                </span>    
+                <div className="form__subtext">
+                    <span className="form__subtext_span"    >
+                        Already have an account? <Link to="/auth/signin"> Sign in</Link>
+                    </span>  
+                </div> 
+                <div className="form__error">
+                        {error && `${error}` }
+                </div>    
             </form>
         </div>
     );

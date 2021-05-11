@@ -40,8 +40,8 @@ const SingIn = () => {
     return (
         <div className="auth">
             <div className="auth__headings">
-                <h1 className="auth__headings_first">disC</h1>
-                <h1 className="auth__headings_second">ulture</h1>
+                <h1 className="auth__headings_first">dis</h1>
+                <h1 className="auth__headings_second">Culture</h1>
             </div>
             <form className="auth__form form" onSubmit={signInHandler} >
                 <h3 className="form__title">Sign in</h3>
@@ -65,28 +65,25 @@ const SingIn = () => {
                         onChange={e => setPassword(e.target.value)}
                     />
                 </div>        
-                <div className="form__element">
+                <div className="form__element form__subtext">
                     <input 
                         type="submit" 
                         name="submit"
                         value="Sign in"
                         onSubmit={signInHandler}
                     />
-                    <div className="form__error">
-                        {error && `${error}` }
-                    </div>
-                </div>
-                <div>
-                    <span className="form__subtext">
-                        Do not have an account? 
-                        <Link to="/auth/signup">Sign up</Link>
-                    </span>      
-                    <br />
-                    <span className="form__subtext_pass">
-                        Forgot my password
-                        <Link to="/auth/forgotpass">Restore</Link>
+                    <span className="form__subtext_span">
+                        <Link to="/auth/forgotpass">Forgot my password</Link>
                     </span> 
-                </div>         
+                </div>
+                <div className="form__subtext">
+                    <span className="form__subtext_span">
+                        Do not have an account?<Link to="/auth/signup"> Sign up</Link>
+                    </span>      
+                </div> 
+                <div className="form__error">
+                    {error && `${error}` }
+                </div>        
             </form>
         </div>
     );

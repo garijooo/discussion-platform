@@ -7,6 +7,10 @@
     src: url("../fonts/Sansation_Bold.ttf");
 }
 
+// colors: 
+$main_first: #6ab688;
+$error: #7c0000;
+// vars:
 $basic_indent:1.5em;
 
 .auth{
@@ -20,20 +24,24 @@ $basic_indent:1.5em;
 
   &__headings {
     display: block;
+    position: relative;
     width: 60%;
     max-width: 1200px;
     height: 100vh;
-
+    font-family: "Sansation Light";
+    font-size: $basic_indent * 2;
+    color: $main_first;
+    
     &_first {
       position: absolute;
-      background: lime;
+      bottom: calc(50vh - .5em);
+      right: 50%;
     }
 
     &_second {
       position: absolute;
-      background: yellowgreen;
-      bottom: 0;
-      right: 200px;
+      top: calc(50vh - .5em);
+      left: 50%;
     }
   }
 
@@ -44,7 +52,17 @@ $basic_indent:1.5em;
 }
   
 @media only screen and (max-width: 500px) {
-  .auth__headings {
-    display: none;
+  .auth  {
+    width: 100vw;
+    padding: 0 0;
+
+    &__headings {
+      display: none;
+    }
+
+    &__form {
+      width: 90%;
+      max-width: 600px;
+    }
   }
 }
