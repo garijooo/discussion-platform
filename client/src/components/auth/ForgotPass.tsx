@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, FC, FormEvent } from 'react';
 
 import axios from 'axios';
 import { baseConfig } from '../../utils/requestConfigs';
 
 import history from '../../histrory';
 
-const ForgotPass = () => {
+const ForgotPass: FC = () => {
     const [email, setEmail] = useState('');
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
 
-    const forgotPassHandler = async (e: any) => {
+    const forgotPassHandler = async (e: FormEvent<HTMLFormElement> | FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         if(!email) return setError('Enter an email');
         try {
@@ -24,11 +24,15 @@ const ForgotPass = () => {
         }
     }
 
+    const homeClickHandler = () => {
+        history.push('/');         
+    }
+
     return (
         <div className="auth">
             <div className="auth__headings">
-                <h1 className="auth__headings_first">dis</h1>
-                <h1 className="auth__headings_second">Culture</h1>
+                <h1 className="auth__headings_first" onClick={homeClickHandler}>dis</h1>
+                <h1 className="auth__headings_second" onClick={homeClickHandler}>Culture</h1>
             </div>
             <form className="auth__form form" onSubmit={forgotPassHandler} >
             <h3 className="form__title">Forgot password</h3>

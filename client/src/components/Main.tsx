@@ -1,24 +1,32 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { signIn, signOut } from '../store/actions';
 
+import axios from 'axios';
 import { UserState, States } from '../types/user';
 import { authConfig } from '../utils/requestConfigs'
+
+import { useCookies } from 'react-cookie';
+
 import history from '../histrory';
 
 import Header from './Header';
 
-const Main = () => {
+const Main:FC = () => {
     const id = useSelector((state: States) => state.user.id);
     const email = useSelector((state: States ) => state.user.email);
     const username = useSelector((state: States ) => state.user.username);
+
+    const [cookies, setCookie] = useCookies(['authtoken']);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         // if(!localStorage.getItem("authtoken")) return history.push('/auth/signin'); 
         // if(!id) fetchPrivateData();
+
+        console.log(`cookies ${cookies['authtoken']}`);
+
     }, []);
 
     const fetchPrivateData = async () => {
@@ -29,20 +37,10 @@ const Main = () => {
         }
     }
 
-    const signOutHandler = () => {
-        dispatch(signOut);
-        localStorage.removeItem("authtoken");
-        history.push('/auth/signin'); 
-    }
-
     return (
         <div>
             <Header />
-            Your username is: 
-            {
-            `   ${username}`
-            }
-            <button onClick={signOutHandler}>Exit</button>
+                {username && `Your username is: ${username}`}
         </div>
     );
 }

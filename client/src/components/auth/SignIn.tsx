@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState, FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -7,41 +7,49 @@ import { signIn } from '../../store/actions';
 import axios from 'axios';
 import { baseConfig } from '../../utils/requestConfigs';
 
+import { useCookies } from 'react-cookie';
+
 import history from '../../histrory';
 
-const SingIn = () => {
+const SingIn:FC = () => {
     // states
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    //
-    // const id = useSelector((state: States) => state.user.id);
-    // const email = useSelector((state: States ) => state.user.email);
-    // const username = useSelector((state: States ) => state.user.username);
+
+    const [cookies, setCookie, removeCookie] = useCookies(['authtoken']);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(localStorage.getItem("authtoken")) return history.push('/'); 
+        if(cookies['authtoken']) return history.push('/'); 
     }, []);
 
 
-    const signInHandler = async (e: any) => {
+    const signInHandler = async (e: FormEvent<HTMLFormElement> | FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         try {
             const { data } = await axios.post("/api/auth/signin",{ email, password }, baseConfig);
-            localStorage.setItem("authtoken", data.token);
+            setCookie('authtoken', data.token, {
+                maxAge: 20 * 60
+            });
             dispatch(signIn(data.token));
             history.push('/');
         } catch(error){
-            localStorage.removeItem("authtoken");
+            removeCookie('authtoken');
             setError(error.response.data.error);
         }
     }
+
+    const homeClickHandler = () => {
+        history.push('/');         
+    }
+
     return (
         <div className="auth">
             <div className="auth__headings">
-                <h1 className="auth__headings_first">dis</h1>
-                <h1 className="auth__headings_second">Culture</h1>
+                <h1 className="auth__headings_first" onClick={homeClickHandler}>dis</h1>
+                <h1 className="auth__headings_second" onClick={homeClickHandler}>Culture</h1>
             </div>
             <form className="auth__form form" onSubmit={signInHandler} >
                 <h3 className="form__title">Sign in</h3>

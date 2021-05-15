@@ -1,0 +1,99 @@
+
+// colors: 
+$main_first: #6ab688;
+// vars:
+$basic_indent:1.5em;
+
+.header {
+
+    &__nav {
+
+    }
+    
+    &__links {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        // background: yellowgreen;
+        
+        list-style: none;
+
+        &_item {
+            text-align: center;
+            width: 15%;
+
+            font-size: $basic_indent;
+
+            border-bottom: 5px solid #fff;
+            transition: ease .5s;
+            a {
+                text-decoration: none;
+                font-family: "Sansation Light";
+                color: $main_first;
+            }
+            &:hover {
+                border-bottom: 5px solid $main_first;
+            }
+
+            &.search {
+                border-bottom: none;
+                
+                & input[type=search] {
+                    padding: $basic_indent / 2;
+                    font-family: "Sansation Light";
+                    font-size: $basic_indent / 5 * 2;
+                    border-radius: 4px;
+                    border: 1px solid #59646a;
+                    outline: none;
+                }
+
+                &:hover {
+                    border-bottom: none
+                }
+            }
+        }
+
+        &_item:first-child {
+            border: none;
+        }
+
+        &_item:last-child{
+            border-bottom: none;
+            a {
+                text-decoration: none;
+                font-family: "Sansation Light";
+                color: #fff;
+                background: $main_first;
+
+                padding: $basic_indent / 3 $basic_indent / 2;
+                border-radius: 6px;
+            }
+            &:hover {
+                border-bottom: none;
+            }
+        }
+    }
+        ///
+        &__headings-block {
+            position: relative;
+            padding: $basic_indent 0;
+
+            &_first, &_second {
+                position: absolute;
+            }
+            
+            &_first {
+                bottom: calc(50% - .5em);
+                right: 70%;
+            }
+
+            &_second {
+                top: calc(50% - .5em);
+                left: 30%; 
+            }
+        }
+
+
+
+}

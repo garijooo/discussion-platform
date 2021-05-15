@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const Error = () => {
+const Error:FC = () => {
     return(
         <div>
             <h1>404</h1>

@@ -31,7 +31,7 @@ $basic_indent:1.5em;
     font-family: "Sansation Light";
     font-size: $basic_indent * 2;
     color: $main_first;
-    
+
     &_first {
       position: absolute;
       bottom: calc(50vh - .5em);
@@ -42,6 +42,16 @@ $basic_indent:1.5em;
       position: absolute;
       top: calc(50vh - .5em);
       left: 50%;
+    }
+
+    &_first, &_second {
+      cursor: pointer;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
   }
 

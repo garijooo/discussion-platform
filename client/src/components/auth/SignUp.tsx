@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, FC, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { signIn } from '../../store/actions';
+
+import { useCookies } from 'react-cookie';
 
 import axios from 'axios';
 import { baseConfig } from '../../utils/requestConfigs';
 
 import history from '../../histrory';
 
-const SignUp = () => {
+const SignUp:FC = () => {
     // states
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -17,13 +19,15 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
 
+    const [cookies, setCookie, removeCookie] = useCookies(['authtoken']);
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(localStorage.getItem("authtoken")) return history.push('/'); 
+        if(cookies['authtoken']) return history.push('/'); 
     }, []);
 
-    const signUpHandler = async (e: any) => {
+    const signUpHandler = async (e: FormEvent<HTMLFormElement> | FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         if(password !== confirmPassword) {
             setError('Passwords do not match');
@@ -32,20 +36,26 @@ const SignUp = () => {
         }
         try {
             const { data } = await axios.post("/api/auth/signup", { username,email,password}, baseConfig);      
-            localStorage.setItem("authtoken", data.token);
+            setCookie('authtoken', data.token, {
+                maxAge: 20 * 60
+            });
             dispatch(signIn(data.token));
             history.push('/');
         } catch(error){
-            localStorage.removeItem("authtoken");
+            removeCookie('authtoken');
             setError(error.response.data.error);
         }
     }
 
+    const homeClickHandler = () => {
+        history.push('/');         
+    }
+    
     return (
         <div className="auth">
             <div className="auth__headings">
-                <h1 className="auth__headings_first">dis</h1>
-                <h1 className="auth__headings_second">Culture</h1>
+                <h1 className="auth__headings_first" onClick={homeClickHandler}>dis</h1>
+                <h1 className="auth__headings_second" onClick={homeClickHandler}>Culture</h1>
             </div>
             <form className="auth__form form" onSubmit={signUpHandler} >
                 <h3 className="form__title">Sign up</h3>

@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { Switch, Router, Route } from 'react-router-dom';
 
 //auth components
@@ -8,14 +7,22 @@ import SignUp from './auth/SignUp';
 import ForgotPass from './auth/ForgotPass';
 import ResetPass from './auth/ResetPass';
 
-import Main from './Main';
+// thread components
+import ThreadShow from './threads/ThreadShow';
+import ThreadCreate from './threads/ThreadCreate';
+import ThreadDelete from './threads/ThreadDelete';
 
-// sub components
+
+// basic components
 import Error from './Error';
+import Main from './Main';
 
 import history from '../histrory';
 // styles
 import '../styles/index.scss';
+
+import Profile from './profile/Profile';
+import Threads from './threads/Threads';
 
 const App = () => {
     return (
@@ -27,6 +34,14 @@ const App = () => {
                     <Route exact path="/auth/signup" component={SignUp} />
                     <Route exact path="/auth/forgotpass" component={ForgotPass} />
                     <Route exact path="/auth/resetpass/:resetToken" component={ResetPass} />
+
+                    <Route exact path="/threads/new" component={ThreadCreate} />
+                    <Route exact path="/threads/delete/:id" component={ThreadDelete} />
+                    <Route exact path="/threads/:id" component={ThreadShow} />
+                    <Route exact path="/threads" component={Threads} />
+                    
+
+                    <Route exact path="/:username" component={Profile} />
                     <Route path="/" component={Error} />
                 </Switch>
             </div>

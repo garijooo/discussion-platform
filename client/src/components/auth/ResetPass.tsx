@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, FC, FormEvent } from 'react';
 import history from '../../histrory';
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 import { baseConfig } from '../../utils/requestConfigs';
 
-const ResetPass = (props: any) => {
+const ResetPass:FC = (props: any) => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
 
-    const resetPasswordHandler = async (e: any) => {
+    const resetPasswordHandler = async (e: FormEvent<HTMLFormElement> | FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         if(password !== confirmPassword) return setError('Passwords do not match');
         try {
@@ -25,11 +25,15 @@ const ResetPass = (props: any) => {
         }
     }
 
+    const homeClickHandler = () => {
+        history.push('/');         
+    }
+
     return(
         <div className="auth">
             <div className="auth__headings">
-                <h1 className="auth__headings_first">dis</h1>
-                <h1 className="auth__headings_second">Culture</h1>
+                <h1 className="auth__headings_first" onClick={homeClickHandler}>dis</h1>
+                <h1 className="auth__headings_second" onClick={homeClickHandler}>Culture</h1>
             </div>
             <form className="auth__form form" onSubmit={resetPasswordHandler} >
                 <h3 className="form__title">Enter new password</h3>

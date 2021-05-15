@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Thread = () => {
+const ThreadShow = () => {
 
     return(
         <div>
-            Thread
+            ThreadShow
         </div>
     );
 }
 
-export default Thread;
+export default ThreadShow;
