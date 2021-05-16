@@ -1,0 +1,20 @@
+@import './constants.scss';
+
+
+.thread {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    background: yellowgreen;
+    padding: 0 10vw;
+
+    &__create {
+
+        display: flex;
+        align-items: center;
+        flex-flow: column;
+
+        background: greenyellow;
+        width: 60vw;
+    }
+}

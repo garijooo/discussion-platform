@@ -1,0 +1,84 @@
+.threads__hr {
+    position: absolute;
+    border-top: 5px solid;
+    top: 11, 8%;
+    width: 14%;
+    margin-left: 48%;
+    color: #6ab688;
+  }
+  .threads__green_hr {
+    border-top: 2px solid;
+    width: 14%;
+    margin-left: 34%;
+  }
+  .threads__thread div {
+    font-family: "Sansation Light";
+    border: 0.5px solid black;
+    width: 30%;
+    padding: 2%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 31%;
+    margin-top: 2%;
+  }
+  .threads__thread h3 {
+    font-family: "Sansation Light";
+    margin-left: 1%;
+  }
+//   a {
+//     text-decoration: none;
+//     color: #6ab688;
+//     margin-top: 2%;
+//   }
+  .threads__img {
+    margin-top: 5%;
+    width: 100%;
+  }
+  .threads__comment_img {
+    margin-left: 8%;
+    margin-top: -5%;
+    width: 5%;
+  }
+  .thread__thread {
+    font-family: "Sansation Light";
+    border: 0.5px solid black;
+    width: 30%;
+    padding: 2%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 31%;
+    margin-top: 3%;
+  }
+  .thread__thread h3 {
+    margin-left: 0%;
+    margin-bottom: 3%;
+  }
+  .thread__comment_img {
+    width: 5%;
+    margin-right: 2%;
+  }
+  .thread__comment_div {
+    display: flex;
+    margin-top: 2%;
+  }
+  .thread__comment {
+    padding-top: 5%;
+    width: 100%;
+  }
+  .thread__comment_p {
+    margin-top: 2%;
+    margin-left: 3%;
+  }
+  .thread_comment_text_hr {
+    border-left: 2px solid #d5d5d5;
+  }
+  .thread__reply {
+    font-size: 0.7em;
+    margin-top: 2%;
+    margin-left: 3%;
+    font-family: "Sansation Bold";
+  }

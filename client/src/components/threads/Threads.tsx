@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 
 import Header from '../Header';
+import ThreadsShow from './ThreadsShow';
 
-const Threads = () => {
-
-    return(
+const Threads: FC = () => {
+    const [counter, setCounter] = useState<number>(1);
+    
+    return (
         <>
             <Header />
-            Threads
+            <ThreadsShow />
         </>
     );
 }

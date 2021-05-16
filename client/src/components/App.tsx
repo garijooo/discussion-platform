@@ -23,6 +23,7 @@ import '../styles/index.scss';
 
 import Profile from './profile/Profile';
 import Threads from './threads/Threads';
+import ProfileInfo from './profile/ProfileInfo';
 
 const App = () => {
     return (
@@ -41,7 +42,11 @@ const App = () => {
                     <Route exact path="/threads" component={Threads} />
                     
 
+
+
                     <Route exact path="/:username" component={Profile} />
+                    <Route exact path="/:username/info" component={ProfileInfo} />
+
                     <Route path="/" component={Error} />
                 </Switch>
             </div>

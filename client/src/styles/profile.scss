@@ -1,0 +1,145 @@
+@import "./constants.scss";
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  padding: 0 10vw;
+
+    // background: greenyellow;
+
+  &__creation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50vw;
+    height: 20vh;
+
+    margin-right: 15vw;
+
+    // background: yellow;
+
+    &_item {
+      // background:red;
+        text-align: center;
+    //   display: flex;
+    //   flex-flow: column;
+    //   align-items: center;
+    //   justify-content: center;
+
+        position: relative;
+
+      font-family: "Sansation Light";
+      border: 0.5px solid rgba(0, 0, 0, .5);
+      box-shadow: 0 0 10px rgba(0,0,0,0.5); 
+
+      max-width: 80%;
+      width: 300px;
+      height: calc(100% - $basic_indent / 2);
+      border-radius: 8px;
+
+        padding-top: $basic_indent / 2;
+
+      & .item__add {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: calc(50% - .25em);
+
+
+        font-size: $basic_indent * 5;
+        text-decoration: none;
+       color: #6ab688;
+    //    height: 40%;
+    //    background: red;
+      }
+
+      & h2 {
+        padding-top: 0;
+      }
+
+      transition: ease .4s;
+
+      &:hover {
+          background: #f7f7f7;
+      }
+
+    }
+  }
+
+  &__preview {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    max-width: 10vw;
+    cursor: pointer;
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    &_avatar {
+      border-radius: 50%;
+      width: 10vw;
+      height: 10vw;
+      // pointer-events: none;
+    }  
+
+    &_username {
+      font-family: "Sansation Light";
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    width: 100%;
+
+    padding-top: $basic_indent;
+    
+    // background: red;
+
+    &_select {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        width: 30%;
+        
+        h2 {
+            width: 50%;
+
+            text-align: center;
+
+            font-family: "Sansation Light";
+            padding: 0 $basic_indent;
+
+        
+            &:first-child {
+                border-bottom: 3px solid $main_first;
+
+            }
+        }
+    }
+  }
+}
+
+
+// .profile__plus {
+//   font-family: "Sansation Light";
+//   color: #6ab688;
+//   font-size: 100px;
+//   margin-left: 30%;
+//   margin-bottom: 2%;
+// }
+
+// .profile__username {
+//   font-family: "Sansation Light";
+//   margin-left: 11%;
+//   margin-top: 0.5%;
+// }
+

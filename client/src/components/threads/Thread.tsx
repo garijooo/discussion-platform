@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { FC, useEffect } from 'react';
 
-const Thread = () => {
+import { useCookies } from 'react-cookie';
 
-    return(
-        <div>
-            Thread
-        </div>
+import { useSelector } from 'react-redux';
+
+// foreign components
+import Header from '../Header';
+import ProfilePreview from '../profile/ProfilePreview';
+
+import history from '../../histrory';
+
+interface Props {
+    username: string,
+    renderContent(): JSX.Element
+}
+
+const Thread: FC<Props> = (props) => {
+
+    return (
+        <>
+            <Header />
+            <article className="thread">
+                <ProfilePreview username={props.username} />
+                {props.renderContent()}
+            </article>
+        </>
     );
 }
 

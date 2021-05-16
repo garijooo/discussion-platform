@@ -10,14 +10,14 @@ import { useCookies } from 'react-cookie';
 import history from '../histrory';
 
 const Header:FC = () => {
-    const username = useSelector((state: States) => state.user.username);
+    const username = useSelector((state: States): string => state.user.username);
 
     const [cookies, setCookie, removeCookie] = useCookies(['authtoken']);
 
     const dispatch = useDispatch();
     
     useEffect(() => {
-        if(localStorage.getItem("authtoken") && !username) dispatch(signIn(localStorage.getItem("authtoken")));
+        if(cookies['authtoken'] && !username) dispatch(signIn(cookies['authtoken']));
     }, []);
 
     const signOutHandler = () => {
@@ -45,7 +45,7 @@ const Header:FC = () => {
                     <input type="search" placeholder="Search"/>
                 </li>
                 <li className="header__links_item">
-                    <Link to="" onClick={signOutHandler} >Sign Out</Link>
+                    <button onClick={signOutHandler} >Sign Out</button>
                 </li>
             </>
         );
@@ -84,6 +84,7 @@ const Header:FC = () => {
         );
     }
     return(
+        <>
         <header className="header">
             <nav className="header__nav">
                 <ul className="header__links">
@@ -91,6 +92,8 @@ const Header:FC = () => {
                 </ul>
             </nav>
         </header>
+        <hr className="header__hr" />
+        </>
     );
 }
 

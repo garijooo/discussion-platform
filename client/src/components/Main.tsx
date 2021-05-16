@@ -13,27 +13,25 @@ import history from '../histrory';
 import Header from './Header';
 
 const Main:FC = () => {
-    const id = useSelector((state: States) => state.user.id);
-    const email = useSelector((state: States ) => state.user.email);
-    const username = useSelector((state: States ) => state.user.username);
+    const id = useSelector((state: States): string => state.user.id);
+    const email = useSelector((state: States): string => state.user.email);
+    const username = useSelector((state: States): string => state.user.username);
 
-    const [cookies, setCookie] = useCookies(['authtoken']);
+    const [cookies, setCookie, removeCookie] = useCookies(['authtoken']);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         // if(!localStorage.getItem("authtoken")) return history.push('/auth/signin'); 
-        // if(!id) fetchPrivateData();
-
-        console.log(`cookies ${cookies['authtoken']}`);
-
+        fetchPrivateData();
+        // console.log(`cookies ${cookies['authtoken']}`);
     }, []);
 
     const fetchPrivateData = async () => {
         try {
-            dispatch(signIn(localStorage.getItem("authtoken")));
+            if(cookies['authtoken'] && ! username) dispatch(signIn(cookies['authtoken']));
         } catch(error: any) {
-            localStorage.removeItem("authtoken");
+            removeCookie('authtoken');
         }
     }
 
