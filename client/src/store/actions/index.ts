@@ -14,7 +14,6 @@ export const signIn = (token: string | null) => async (dispatch: any)=> {
         if(!token) return dispatch({ type: UserActionTypes.USER_SIGNED_OUT });
         const { data } = await axios.get('/api/private/get/userdata', authConfig(token));
         const { user } = data;
-        console.log(data);
         dispatch({
             type: UserActionTypes.USER_SIGNED_IN,
             payload: user

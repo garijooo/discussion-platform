@@ -1,9 +1,9 @@
-const { Thread } = reqiure('../models/Thread');
+const { Thread } = require('../models/Thread');
 
 exports.createThread = async (req, res, next) => {
-    const { authorId, text } = req.body;
+    const { authorId, heading, text } = req.body;
     try {   
-        const thread = await Thread.create({ authorId, text });
+        const thread = await Thread.create({ authorId, heading, text });
         res.status(201).json({
             success: true, 
             id: thread._id

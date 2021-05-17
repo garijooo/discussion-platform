@@ -1,23 +1,23 @@
-import React, { useState, useEffect, FC } from 'react';
-
-import { reduxForm } from 'redux-form';
+import React, { useState, useEffect, FC, FormEvent } from 'react';
 
 import { useCookies } from 'react-cookie';
 
 import { useSelector } from 'react-redux';
 import { States } from '../../types/user';
 
+
 // foreign components
-import Header from '../Header';
 import ThreadForm from './ThreadForm';
 import ThreadFormReview from './ThreadFormReview';
 
 import history from '../../histrory';
 import Thread from './Thread';
+import { ThreadFormData } from '../../types/thread';
 
 
 const ThreadCreate: FC = () => {
     const [showFormReview, setShowFormReview] = useState<boolean>(false);
+    const [data, setData] = useState<ThreadFormData>({ heading: '', text: '' });
 
     const [cookies, setCookie, removeCookie] = useCookies(['authtoken']);
     const username = useSelector((state: States): string => state.user.username);
@@ -26,11 +26,35 @@ const ThreadCreate: FC = () => {
         if (!cookies['authtoken']) return history.push('/auth/signin');
     }, []);
 
+    // useEffect(() => {
+    //     console.log(data);
+    // }, [data]);
+
+    const onPreviewHandler = (data: ThreadFormData): void => {
+        setShowFormReview(!showFormReview);
+        setData(data);
+    }
+
+    const onCancelHandler = () => {
+        setShowFormReview(!showFormReview);
+    }
+
     const renderContent = function () {
         return (
             <section className="thread__create">
                 <h2>Create your thread</h2>
-                {showFormReview ? <ThreadFormReview /> : <ThreadForm />}
+                {
+                    showFormReview ?
+                        <ThreadFormReview
+                            data={data}
+                            onCancel={onCancelHandler}
+                        />
+                        :
+                        <ThreadForm 
+                        onSubmit={onPreviewHandler} 
+                        data={data.heading !== '' && data.text !== '' ? data : undefined}
+                        />
+                }
             </section>
         );
     }
@@ -43,4 +67,4 @@ const ThreadCreate: FC = () => {
     );
 }
 
-export default reduxForm({ form: 'threadForm' })(ThreadCreate);
+export default ThreadCreate;

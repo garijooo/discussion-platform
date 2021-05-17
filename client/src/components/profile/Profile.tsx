@@ -25,7 +25,7 @@ const Profile: FC<Props> = props => {
     const [cookies, setCookie, removeCookie] = useCookies(['authtoken']);
 
     useEffect(() => {
-        console.log(cookies['authtoken']);
+        // console.log(cookies['authtoken']);
     }, []);
 
     return (

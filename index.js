@@ -10,6 +10,11 @@ const errorHandler = require('./middleware/errorHandler');
 app.use(express.json());
 app.use('/api/auth/', require('./routes/authRoutes'));
 app.use('/api/private/', require('./routes/privateRoutes'));
+
+app.use('/api/user/', require('./routes/userRoutes'));
+
+
+app.use('/api/thread/', require('./routes/threadRoutes'));
 app.use(errorHandler);
  
 if(process.env.NODE_ENV === 'production'){

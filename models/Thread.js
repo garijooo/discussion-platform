@@ -7,6 +7,10 @@ const ThreadSchema = new mongoose.Schema({
         ref: 'User',
         required: [true, 'No author here']
     },
+    heading: {
+        type: String,
+        required: [true, 'Please provide the heading of your thread']
+    },
     text: {
         type: String,
         required: [true, 'Please provide the text of your thread']

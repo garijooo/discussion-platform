@@ -17,6 +17,10 @@ $basic_indent:1.5em;
     margin: 0;
 }
 
+h1, h2, p, a, label, button, input {
+    font-family: "Sansation Light";
+}
+
 .form {
     display: flex;
     justify-content: center;
