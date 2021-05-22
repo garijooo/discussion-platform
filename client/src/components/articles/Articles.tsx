@@ -1,12 +1,12 @@
 import React from 'react';
-import ArticlesShow from './ArticlesShow';
+import ArticlesList from './ArticlesList';
 
 const Articles = () => {
 
     return(
         <div>
             Articles
-            <ArticlesShow />
+            <ArticlesList />
         </div>
     );
 }

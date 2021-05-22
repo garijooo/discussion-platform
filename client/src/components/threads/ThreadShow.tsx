@@ -15,12 +15,14 @@ interface Props extends RouteComponentProps<MatchParams> {
 }
 
 const ThreadShow: FC<Props> = props => {
-    const [thread, setThread] = useState<ThreadData>();
+    const emptyThread = { heading: '', authorId: '', description: '' };
+
+    const [thread, setThread] = useState<ThreadData>(emptyThread);
     const [authorUsername, setAuthorUsername] = useState<string>('');
 
     useEffect(() => {
         const getThread = async () => {
-            if (!props.match.params.id) return setThread(undefined);
+            if (!props.match.params.id) return setThread(emptyThread);
             const { id } = props.match.params;
             try {
                 const { data } = await axios.get(`/api/thread/get/${id}`, baseConfig);
@@ -48,12 +50,15 @@ const ThreadShow: FC<Props> = props => {
     }, [thread]);
 
     const renderContent = function () {
-        return (
-            <>
-                Thread show <br />
-                {`Heading: ${thread!.heading} Text: ${thread!.text}`}
-            </>
-        );
+        if (thread !== emptyThread && authorUsername) 
+            return (
+                <section className='thread__show'>
+                    <h1>{thread.heading}</h1>
+                    <span>{thread.description}</span>
+                    <span>{authorUsername}</span>;
+                </section>
+            );
+        return <></>;
     }
 
     return (

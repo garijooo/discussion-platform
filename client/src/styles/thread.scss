@@ -26,24 +26,24 @@
             width: 60%;
             padding: 0 $basic_indent;
 
-            input[type=text], textarea {
-                margin-bottom: $basic_indent;
-                padding: $basic_indent / 3;
-                font-size: $basic_indent / 3 * 2;
-                outline: none;
-            }
-            input[type=text] {
-                width: 80%;
-            }
-            textarea {
-                width: 80%;
-                resize: none;
-            }
-            label {
-                width: 80%;
-                margin-bottom: $basic_indent / 4;
-                font-size: $basic_indent;
-            }
+            // input[type=text], textarea {
+            //     margin-bottom: $basic_indent;
+            //     padding: $basic_indent / 3;
+            //     font-size: $basic_indent / 3 * 2;
+            //     outline: none;
+            // }
+            // input[type=text] {
+            //     width: 80%;
+            // }
+            // textarea {
+            //     width: 80%;
+            //     resize: none;
+            // }
+            // label {
+            //     width: 80%;
+            //     margin-bottom: $basic_indent / 4;
+            //     font-size: $basic_indent;
+            // }
         }
     }
 }

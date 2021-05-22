@@ -1,0 +1,178 @@
+@import "./constants.scss";
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: $basic_indent 0;
+  border: 1px solid #9fa8b4;
+  border-radius: 8px;
+
+  font-family: "Sansation Light";
+
+  &__title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 200%;
+  }
+
+  &__element {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $basic_indent * 3 / 4;
+    width: 80%;
+
+    & label,
+    & input {
+      margin-bottom: $basic_indent / 3;
+      width: calc(100% - ($basic_indent / 3));
+      font-family: "Sansation Light";
+      outline: none;
+    }
+
+    & input[type=text],
+    & input[type=email],
+    & input[type=password],
+    & input[type=submit] {
+      padding: $basic_indent / 3 $basic_indent / 4;
+    }
+
+    & input[type=submit] {
+      width: 40%;
+      background: $main_first;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      cursor: pointer;
+
+      transition: ease 0.8s;
+
+      &:hover {
+        background: #81daa4;
+      }
+    }
+
+    & label,
+    & input[type=submit] {
+      font-size: $basic_indent * 3 / 4;
+    }
+  }
+
+  &__error {
+    color: $error;
+  }
+
+  &__subtext {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: $basic_indent * 3 / 4;
+
+    &_span a {
+      color: $main_first;
+    }
+
+    &.center {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  textarea {
+    width: 80%;
+    resize: none;
+    outline: none;
+    margin-bottom: $basic_indent;
+    padding: 0 $basic_indent / 4;
+  }
+  label {
+    width: 80%;
+    margin-bottom: $basic_indent / 3;
+  }
+
+  &__heading {
+    &_label {
+      font-size: $basic_indent * 5 / 4;
+    }
+
+    &_textarea {
+      font-size: $basic_indent / 4 * 3;
+    }
+  }
+
+  &__description {
+    &_label {
+      font-size: $basic_indent;
+    }
+
+    &_textarea {
+      font-size: $basic_indent / 3 * 2;
+    }
+  }
+
+
+  &__input-file {
+    display: none;
+  }
+
+  &__input-block {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+
+    background: greenyellow;
+    button, .select {
+      width: 50%;
+    }
+
+    input[type=file], button, select {
+      font-size: $basic_indent * 2 / 3;
+      border: 1px solid #c9c9c9;
+      border-radius: 6px;
+      padding: $basic_indent / 4 $basic_indent / 3;
+      background: #fff;
+    }
+
+    .select {
+      position: relative;
+      display: inline-block;
+    }
+    .select:after {
+      content: "▼";
+      // padding: 0 8px;
+      font-size: $basic_indent * 2 / 3;
+      position: absolute;
+      // right: $basic_indent / 3;
+      // right: 0;
+
+      // top: $basic_indent / 3;
+      top: $basic_indent / 3;
+      right: $basic_indent * 2 / 3;
+      z-index: 1;
+      text-align: center;
+      width: 0;
+      height: 100%;
+      pointer-events: none;
+      box-sizing: border-box;
+      background: red;
+    }
+    select {
+      // padding-right: 25px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+    
+  }
+
+  &__action {
+    display: inline-flex;
+    justify-content: space-between;
+    width: calc(80% + 1.5em / 2);
+    // background: lime;
+    // margin: 0 $basic_indent / 2;
+    // background: red;
+  }
+}

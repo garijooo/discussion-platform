@@ -19,10 +19,10 @@ const ThreadFormReview: FC<Props> = props => {
 
     const onFormSubmitHandler = async () => {
         // console.log(`${props.data.heading} ${props.data.text}`)
-        const { heading, text} = props.data;
+        const { heading, description} = props.data;
         const authorId = id;
         try {
-            const { data } = await axios.post('/api/thread/new', { authorId, heading, text}, baseConfig);
+            const { data } = await axios.post('/api/thread/new', { authorId, heading, description}, baseConfig);
             if(data.success) return history.push(`/threads/${data.id}`);
         } catch (error) {
             console.log(error.response.data.error);
@@ -31,9 +31,9 @@ const ThreadFormReview: FC<Props> = props => {
 
     return(
         <>
-            <label>Heading: {props.data.heading}</label>
-            <label>Text: {props.data.text}</label>
-            <label>Are you sure?</label>
+            <span>Heading: {props.data.heading}</span>
+            <span>Text: {props.data.description}</span>
+            <span>Are you sure?</span>
             <div>
                 <button onClick={props.onCancel}>Back</button>
                 <button onClick={onFormSubmitHandler}>Create</button>

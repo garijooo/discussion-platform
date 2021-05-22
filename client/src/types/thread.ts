@@ -1,10 +1,10 @@
 export interface ThreadFormData {
     heading: string, 
-    text: string
+    description: string
 }
 
 export interface ThreadData {
     authorId: string,
     heading: string, 
-    text: string
+    description: string
 }

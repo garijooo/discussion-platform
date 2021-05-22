@@ -16,7 +16,6 @@ interface Props {
 }
 
 const Thread: FC<Props> = (props) => {
-
     return (
         <>
             <Header />

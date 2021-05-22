@@ -17,13 +17,13 @@ import { ThreadFormData } from '../../types/thread';
 
 const ThreadCreate: FC = () => {
     const [showFormReview, setShowFormReview] = useState<boolean>(false);
-    const [data, setData] = useState<ThreadFormData>({ heading: '', text: '' });
+    const [data, setData] = useState<ThreadFormData>({ heading: '', description: '' });
 
     const [cookies, setCookie, removeCookie] = useCookies(['authtoken']);
     const username = useSelector((state: States): string => state.user.username);
 
     useEffect(() => {
-        if (!cookies['authtoken']) return history.push('/auth/signin');
+       if (!cookies['authtoken']) return history.push('/auth/signin');
     }, []);
 
     // useEffect(() => {
@@ -52,7 +52,7 @@ const ThreadCreate: FC = () => {
                         :
                         <ThreadForm 
                         onSubmit={onPreviewHandler} 
-                        data={data.heading !== '' && data.text !== '' ? data : undefined}
+                        data={data.heading !== '' && data.description !== '' ? data : undefined}
                         />
                 }
             </section>

@@ -6,8 +6,8 @@ import { RouteComponentProps } from 'react-router';
 
 
 import Header from '../Header';
-import ThreadsShow from '../threads/ThreadsShow';
-import ArticlesShow from '../articles/ArticlesShow';
+import ThreadsList from '../threads/ThreadsList';
+import ArticlesList from '../articles/ArticlesList';
 import ProfilePreview from './ProfilePreview';
 
 import { useCookies } from 'react-cookie';
@@ -50,7 +50,7 @@ const Profile: FC<Props> = props => {
                     <h2 onClick={() => setSelected(false)}>Threads</h2>
                 </div>
                 <div className="profile__section_display">
-                    {selected ? <ArticlesShow /> : <ThreadsShow />}
+                    {selected ? <ArticlesList /> : <ThreadsList />}
                 </div>
             </div>
         </div>

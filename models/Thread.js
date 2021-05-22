@@ -11,9 +11,9 @@ const ThreadSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please provide the heading of your thread']
     },
-    text: {
+    description: {
         type: String,
-        required: [true, 'Please provide the text of your thread']
+        required: [true, 'Please provide the description of your thread']
     },
     comments: [ThreadCommentSchema],
     rating: {

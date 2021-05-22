@@ -31,7 +31,7 @@ $basic_indent:1.5em;
 
             font-size: $basic_indent;
 
-            border-bottom: 5px solid #fff;
+            // border-bottom: 5px solid #fff;
             transition: ease .5s;
             & a {
                 text-decoration: none;
@@ -108,6 +108,14 @@ $basic_indent:1.5em;
         }
 
     }
+
+
+    // header__show
+    &__show {
+        
+    }
+
+
 }
     
 @media only screen and (max-width: 500px) { 
